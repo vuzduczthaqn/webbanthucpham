@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Other configuration properties -->
+
+        <!-- JDBC connection settings -->
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://DESKTOP-UOQ7755:1433;database=demoweb;encrypt=false</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password">vdt1410</property>
+
+        <!-- Other configuration properties -->
+        <!--xoa tao lai tu dau moi khi chay -->
+        <!--<property name="hibernate.hbm2ddl.auto">clear-drop</property>-->
+        <property name="hibernate.hbm2ddl.auto">create</property><!--cap nhat thong tin moi-->
+
+        <property name="show_sql">true</property><!--hien thi cau lenh o console-->
+
+
+        <mapping class="com.welcome.Model.Position"/>
+        <mapping class="com.welcome.Model.User"/><!--anh xa toa table trong db-->
+
+        <mapping class="com.welcome.Model.Producer"/>
+        <mapping class="com.welcome.Model.ProductType"/>
+        <mapping class="com.welcome.Model.Product"/>
+        <mapping class="com.welcome.Model.Customer"/>
+        <mapping class="com.welcome.Model.CartPK"/>
+        <mapping class="com.welcome.Model.Cart"/>
+        <mapping class="com.welcome.Model.Bill"/>
+        <mapping class="com.welcome.Model.BillDetailsPK"/>
+        <mapping class="com.welcome.Model.BillDetails"/>
+        <mapping class="com.welcome.Model.DeliveryAddress"/>
+
+
+    </session-factory>
+</hibernate-configuration>

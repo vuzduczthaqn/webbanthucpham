@@ -5,7 +5,6 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Other configuration properties -->
-
         <!-- JDBC connection settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
@@ -16,7 +15,7 @@
         <!-- Other configuration properties -->
         <!--xoa tao lai tu dau moi khi chay -->
         <!--<property name="hibernate.hbm2ddl.auto">clear-drop</property>-->
-        <property name="hibernate.hbm2ddl.auto">create</property><!--cap nhat thong tin moi-->
+        <property name="hibernate.hbm2ddl.auto">validate</property><!--cap nhat thong tin moi-->
 
         <property name="show_sql">true</property><!--hien thi cau lenh o console-->
 
@@ -28,10 +27,8 @@
         <mapping class="com.welcome.Model.ProductType"/>
         <mapping class="com.welcome.Model.Product"/>
         <mapping class="com.welcome.Model.Customer"/>
-        <mapping class="com.welcome.Model.CartPK"/>
         <mapping class="com.welcome.Model.Cart"/>
         <mapping class="com.welcome.Model.Bill"/>
-        <mapping class="com.welcome.Model.BillDetailsPK"/>
         <mapping class="com.welcome.Model.BillDetails"/>
         <mapping class="com.welcome.Model.DeliveryAddress"/>
 

@@ -3,8 +3,10 @@ package com.welcome.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
+
 @Entity
-public class CommentModel {
+public class CommentModel implements Serializable {
     @Id
     private String idBegin;
     private String content;

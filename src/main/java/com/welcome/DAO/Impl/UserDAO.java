@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 public class UserDAO {
-    public boolean Login(User user) {
+    public User Login(User user) {
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             if (sessionFactory != null) {
@@ -23,9 +23,9 @@ public class UserDAO {
                     try {
                         List<User> list=query.getResultList();
                         if(list.isEmpty()){
-                            return false;
+                            return null;
                         }else {
-                            return true;
+                            return list.get(0);
                         }
                     } catch (NoResultException e) {
                         e.printStackTrace();
@@ -35,6 +35,6 @@ public class UserDAO {
         } catch (HibernateError he) {
             System.out.println(he);
         }
-        return false;
+        return null;
     }
 }

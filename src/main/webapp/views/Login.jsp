@@ -27,7 +27,7 @@
                     <label id="title">Đăng nhập</label>
                     <form action="<c:url value='/dang-nhap'/>" method="post">
                         <div class="box-input">
-                            <input type="email" name="txtUser" value="" placeholder="Email">
+                            <input type="text" name="txtUser" value="" placeholder="Tên đăng nhập">
                             <input type="password" name="txtPass" placeholder="Mật khẩu">
                             <a href="#">Quên mật khẩu?</a>
                         </div>

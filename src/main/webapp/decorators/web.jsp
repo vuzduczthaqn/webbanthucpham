@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="<c:url value="/template/web/css/owl.carousel.min.css"/>" type="text/css">
     <link rel="stylesheet" href="<c:url value="/template/web/css/slicknav.min.css"/>" type="text/css">
     <link rel="stylesheet" href="<c:url value="/template/web/css/style.css"/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value="/template/web/css/mystyle.css"/>" type="text/css">
 </head>
 <body>
 <%@include file="/common/web/header.jsp" %>

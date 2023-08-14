@@ -14,21 +14,17 @@ public class MethodDAO<T> {
     public Session getSession() {
         return HibernateUtil.getSessionFactory().openSession();
     }
-//
-//    public void setSession(Session session) {
-//        this.session = session;
-//    }
 
     public void QuerryInsert(T t) {
-        try {
-            transaction.begin();
-            session.persist(t);
-            transaction.commit();
-        }catch (Exception e){
-            transaction.rollback();
-        }finally {
-            session.close();
-        }
+//        try {
+//            transaction.begin();
+//            session.persist(t);
+//            transaction.commit();
+//        }catch (Exception e){
+//            transaction.rollback();
+//        }finally {
+//            session.close();
+//        }
 
     }
 

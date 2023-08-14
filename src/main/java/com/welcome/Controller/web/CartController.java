@@ -1,6 +1,7 @@
 package com.welcome.Controller.web;
 
 import com.welcome.DTO.CartDTO;
+import com.welcome.Model.Customer;
 import com.welcome.Model.Product;
 import com.welcome.Model.User;
 import com.welcome.Service.CartService;
@@ -22,26 +23,25 @@ public class CartController extends HttpServlet {
     private CartService cartService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user= (User) SesionUtil.getInstance().getValue(req,SystemConstant.USER);
-        if(true) {
-            List<CartDTO> list=cartService.getCart("123");
-            CartDTO cartDTO=new CartDTO();
-            cartDTO.setPayment(1000.0);
-            cartDTO.setPathImg("aaaaaaaa");
-            cartDTO.setProductId(123);
-            cartDTO.setProductName("san pham 1");
-            cartDTO.setPrice(10000.0);
-            cartDTO.setQuantity(9);
-            list.add(cartDTO);
+        Customer customer= (Customer) SesionUtil.getInstance().getValue(req,SystemConstant.USER);
+            List<CartDTO> list=cartService.getCart(customer.getCustomerId()+"");
+            float paymenttotal=0;
+            for (CartDTO cartDTO:list)
+                paymenttotal+=(float) (cartDTO.getQuantity().floatValue()*cartDTO.getPrice().floatValue());
             req.setAttribute("listProduct",list);
+            req.setAttribute("paymenttotal",paymenttotal);
             req.getRequestDispatcher("/views/web/Cart.jsp").forward(req, resp);
-        }
-        else{
-            req.getRequestDispatcher("dang-nhap?action=login").forward(req,resp);
-        }
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        try {
+            String id=req.getParameter("idProduct");
+            int quantity= Integer.parseInt(req.getParameter("quantity").trim());
+            Customer customer= (Customer) SesionUtil.getInstance().getValue(req,SystemConstant.USER);
+            cartService.insertProduct(customer,id,quantity);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

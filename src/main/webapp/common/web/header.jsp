@@ -15,25 +15,34 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="<c:url value="/template/web/img/logo.png"/>" alt=""></a>
+        <a href="trang-chu"><img src="<c:url value="/template/web/img/logo.png"/>" alt=""></a>
     </div>
     <div class="humberger__menu__widget">
         <c:if test="${empty USER}">
             <div class="header__top__right__auth">
-                <a href="<c:url value="/dang-nhap?action=login"/> "><i class="fa fa-user"></i>Đăng nhập</a>
+                <a href="<c:url value="/dang-nhap?action=login"/> "><img
+                        src="<c:url value="/template/web/img/User.png"/>">Đăng nhập</a>
             </div>
         </c:if>
         <c:if test="${not empty USER}">
             <div class="header__top__right__auth">
-                <i class="fa fa-user"></i> Xin chào , <c:out value="${USER.getUsername()}"/>|<a
-                    href="<c:url value="/thoat?action=logout"/> ">Đăng xuất</a>
+                <img src="<c:url value="/template/web/img/User.png"/>"> <label>Xin chào,<c:out
+                    value="${USER.customerName}"/>|<a
+                    href="<c:url value="/thoat?action=logout"/> ">Đăng xuất</a></label>
             </div>
         </c:if>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li class="active"><a href="trang-chu">Trang chủ</a></li>
-            <li><a href="gio-hang">Giỏ hàng</a></li>
+            <li>
+                <c:if test="${empty USER}">
+                    <a href="<c:url value="/dang-nhap?action=login"/>">Giỏ hàng</a>
+                </c:if>
+                <c:if test="${not empty USER}">
+                    <a href="gio-hang">Giỏ hàng</a>
+                </c:if>
+            </li>
             <li><a href="./blog.html">Blog</a></li>
             <li><a href="./contact.html">Liên hệ</a></li>
         </ul>
@@ -77,13 +86,15 @@
                         </div>
                         <c:if test="${empty USER}">
                             <div class="header__top__right__auth">
-                                <a href="<c:url value="/dang-nhap?action=login"/> "><i class="fa fa-user"></i>Đăng nhập</a>
+                                <a href="<c:url value="/dang-nhap?action=login"/> "><img
+                                        src="<c:url value="/template/web/img/User.png"/>">Đăng nhập</a>
                             </div>
                         </c:if>
                         <c:if test="${not empty USER}">
                             <div class="header__top__right__auth">
-                                <i class="fa fa-user"></i> Xin chào , <c:out value="${USER.getUsername()}"/>|<a
-                                    href="<c:url value="/thoat?action=logout"/>">Đăng xuất</a>
+                                <img src="<c:url value="/template/web/img/User.png"/>"> <label>Xin chào,<c:out
+                                    value="${USER.customerName}"/>|<a
+                                    href="<c:url value="/thoat?action=logout"/> ">Đăng xuất</a></label>
                             </div>
                         </c:if>
                     </div>
@@ -95,14 +106,21 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="<c:url value="/template/web/img/logo.png"/> " alt=""></a>
+                    <a href="trang-chu"><img src="<c:url value="/template/web/img/logo.png"/> " alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="trang-chu">Trang chủ</a></li>
-                        <li><a href="gio-hang">Giỏ hàng</a></li>
+                        <li>
+                            <c:if test="${empty USER}">
+                                <a href="<c:url value="/dang-nhap?action=login"/>">Giỏ hàng</a>
+                            </c:if>
+                            <c:if test="${not empty USER}">
+                                <a href="gio-hang">Giỏ hàng</a>
+                            </c:if>
+                        </li>
                         <li><a href="#">blog</a></li>
                         <li><a href="#">Liên hệ</a></li>
                     </ul>
@@ -115,4 +133,4 @@
     </div>
 </header>
 <!-- Header Section End -->
-
+i

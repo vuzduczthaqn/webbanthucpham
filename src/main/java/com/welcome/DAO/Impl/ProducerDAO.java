@@ -22,12 +22,13 @@ public class ProducerDAO implements IMethodDAO<Producer> {
     }
 
     @Override
-    public List<Producer> getList() {
+    public List<Producer> getList(int start) {
         return null;
     }
 
     @Override
-    public Producer getSingle() {
+    public Producer getSingle(String id) {
         return null;
     }
+
 }

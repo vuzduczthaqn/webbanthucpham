@@ -16,8 +16,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ogani | Template</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="<c:url value="/template/web/css/bootstrap.min.css"/>" type="text/css">
@@ -59,11 +66,14 @@
                     <div class="hero__search__form">
                         <form action="#">
                             <div class="hero__search__categories">
-                                All Categories
+                                Tất cả sản phẩm
                                 <span class="arrow_carrot-down"></span>
                             </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <form action="chi-tiet-san-pham">
+                                <input type="text" placeholder="What do yo u need?" name="searchProduct">
+                                <button type="submit" class="site-btn">Tìm kiếm</button>
+                            </form>
+
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -71,12 +81,12 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
+                            <h5>+0346548121</h5>
+                            <span>Hỗ trợ 24/7</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                <div class="hero__item set-bg" data-setbg="<c:url value="/template/web/img/hero/banner.jpg"/>">
                     <div class="hero__text">
                         <span>FRUIT FRESH</span>
                         <h2>Vegetable <br/>100% Organic</h2>
@@ -131,107 +141,51 @@
 <!-- Featured Section Begin -->
 <section class="featured spad">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Featured Product</h2>
-                </div>
-                <div class="featured__controls">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Oranges</li>
-                        <li data-filter=".fresh-meat">Fresh Meat</li>
-                        <li data-filter=".vegetables">Vegetables</li>
-                        <li data-filter=".fastfood">Fastfood</li>
-                    </ul>
-                </div>
+        <c:if test="${not empty listProduct}">
+        <div class="col-lg-12">
+            <div class="section-title">
+            </div>
+            <div class="featured__controls">
+                <ul>
+                </ul>
             </div>
         </div>
-        <c:if test="${not empty listProduct}">
-            <c:forEach var="Product" items="${listProduct}">
-                <div class="row featured__filter" style="display: block">
-                    <c:if test="${Product.type.getTypeId()=='FM'}">
-                        <form method="get" action="chi-tiet-san-pham?id=${Product.productId}">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
-                                <div class="featured__item">
-                                    <div class="featured__item__pic set-bg"
-                                         data-setbg="<c:url value="${Product.pathImg}"/>">
-                                        <ul class="featured__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="featured__item__text">
-                                        <h6><a href="#">${Product.productName}</a></h6>
-                                        <h5>${Product.price}</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </c:if>
-                    <c:if test="${Product.type.getTypeId()=='FF'}">
-                        <form method="get" action="chi-tiet-san-pham?id=${Product.productId}">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood">
-                                <div class="featured__item">
-                                    <div class="featured__item__pic set-bg"
-                                         data-setbg="<c:url value="${Product.pathImg}"/>">
-                                        <ul class="featured__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="featured__item__text">
-                                        <h6><a href="#">${Product.productName}</a></h6>
-                                        <h5>${Product.price}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </c:if>
-                    <c:if test="${Product.type.getTypeId()=='FO'}">
-                        <form method="get" action="chi-tiet-san-pham?id=${Product.productId}">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
-                                <div class="featured__item">
-                                    <div class="featured__item__pic set-bg"
-                                         data-setbg="<c:url value="${Product.pathImg}"/>">
-                                        <ul class="featured__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="featured__item__text">
-                                        <h6><a href="#">${Product.productName}</a></h6>
-                                        <h5>${Product.price}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </c:if>
-                    <c:if test="${true}">
-                        <form method="get" action="chi-tiet-san-pham?id=${Product.productId}">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                                <div class="featured__item">
-                                    <div class="featured__item__pic set-bg"
-                                         data-setbg="<c:url value="${Product.pathImg}"/>">
-                                        <ul class="featured__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="featured__item__text">
-                                        <h6><a href="chi-tiet-san-pham?id=${Product.productId}">${Product.productName}</a></h6>
-                                        <h5>${Product.price}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </c:if>
+        <div class="row featured__filter" style="display: block" id="contentContainer">
+            <c:forEach var="Product" items="${sessionScope.listProduct}" begin="${start-1}" end="${start+2}">
+            <form method="get" action="chi-tiet-san-pham?id=${Product.productId}">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg"
+                             data-setbg="<c:url value="${Product.pathImg}"/>">
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="chi-tiet-san-pham?id=${Product.productId}">${Product.productName}</a></h6>
+                            <h5>${Product.price}</h5>
+                        </div>
+                    </div>
                 </div>
+            </form>
             </c:forEach>
-        </c:if>
+        </div>
+    </c:if>
     </div>
 </section>
-<!-- Featured Section End -->
+<div id="link-product">
+    <button id="listProduct" onclick="loadMore()">Xem thêm</button>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    function loadMore(){
+        $.ajax({
+            url: '<c:url value="api-load"/>',
+            type: "GET",
+            success: function(data) {
+                var row=document.getElementById("contentContainer");
+                row.innerHTML+=data;
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

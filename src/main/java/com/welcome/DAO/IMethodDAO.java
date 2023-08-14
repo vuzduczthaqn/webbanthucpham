@@ -9,6 +9,6 @@ public interface IMethodDAO <T>{
     public void insert(T t);
     public int delete(String sql,T t);
     public int update(String sql,T t);
-    public List<T> getList();
-    public T getSingle();
+    public List<T> getList(int start);
+    public T getSingle(String id);
 }

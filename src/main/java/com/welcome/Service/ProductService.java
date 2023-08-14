@@ -13,11 +13,11 @@ import java.util.Optional;
 public class ProductService {
     @Inject
     private IProductDAO productDAO;
-    public Optional<Product> getProduct(List<Product> productList, String idProduct){
-        return productList.stream().filter(e->idProduct.equalsIgnoreCase(e.getProductId()+"")).findFirst();
+    public Product getProduct(String idProduct){
+        return productDAO.getSingle(idProduct);
     }
-    public List<Product> getListProduct(){
-        return productDAO.getList();
+    public List<Product> getListProduct(int start){
+        return productDAO.getList(start);
     }
     public Product getProductFromList(List<Product> list,String id){
         Optional<Product> optional=list.stream().filter(e->id.equalsIgnoreCase(e.getProductId()+"")).findFirst();

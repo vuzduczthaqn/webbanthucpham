@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form {
+        display: flex;
+    }
+
+    div {
+        height: 30px;
+        background-color: aqua;
+        width: 30px;
+        margin: 3px;
+    }
+</style>
+
+<body>
+    <form action="" id="page_number">
+        <div><a id="page1" href="#">1</a></div>
+        <div><a id="page2" href="#">2</a></div>
+        <div><a id="page3" href="#">3</a></div>
+        <div><a id="page4" href="#">4</a></div>
+        <div><a id="page5" href="#">5</a></div>
+        <div><a id="page6" href="#">6</a></div>
+    </form>
+    <script type="text/javascript">
+        var aElements = document.querySelectorAll('#page_number a');
+        aElements.forEach(function (a) {
+            a.addEventListener('click', function (event) {
+                var clickedId = event.target.id;
+                
+            });
+        });
+    </script>
+</body>
+
+</html>

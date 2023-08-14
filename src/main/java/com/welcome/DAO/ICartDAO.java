@@ -15,11 +15,6 @@ public interface ICartDAO extends IMethodDAO<Cart> {
     @Override
     int update(String sql, Cart cart);
 
-    @Override
     List<Cart> getList();
-
-    @Override
-    Cart getSingle();
-
     public List<Cart> getByCondition(String condition);
 }
